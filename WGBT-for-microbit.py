@@ -3,7 +3,7 @@ import utime
 
 uart.init(baudrate=115200, tx=pin16, rx=pin2)
 
-# ★ 顔データ（あなたのUIを維持）
+# ★ 顔データ
 danger_face = Image("90009:09090:00000:99999:90909")
 severe_face = Image("00000:09090:00000:09090:90909")
 alert_face  = Image("00000:09090:00000:09990:90009")
@@ -31,7 +31,7 @@ def show_danger():
 today_wbgt = None
 tomorrow_wbgt = None
 
-# ★ 壊れない UART 行単位読み
+# ★ UART 行単位読み
 def uart_readline():
     buf = b""
     timeout = utime.ticks_ms()
@@ -123,7 +123,7 @@ while True:
         level = get_level(wbgt)
 
         if anim_count >= 3:
-            # prefix("TODAY")               # ← ★ アニメーションの前に TODAY を表示
+            # prefix("TODAY")               # ← ★ 必要なら　アニメーションの前に TODAY を表示
             display.scroll(str(wbgt))
             utime.sleep(0.15) 
             anim_count = 0
