@@ -3,28 +3,29 @@ import utime
 
 uart.init(baudrate=115200, tx=pin16, rx=pin2)
 
-# ★ 顔データ
-danger_face = Image("90009:99099:00000:99099:90009")
-severe_face = Image("09090:00000:00000:09990:90009")
-alert_face  = Image("00000:09090:00000:00000:09990")
+# ★ 顔データ（あなたのUIを維持）
+danger_face = Image("90009:09090:00000:99999:90909")
+severe_face = Image("00000:09090:00000:09090:90909")
+alert_face  = Image("00000:09090:00000:09990:90009")
 caution_face= Image("00000:09090:00000:90009:09990")
 
-caution2 = Image("00000:09090:00000:90009:00900")
-alert_close = Image("00000:00000:00000:00000:09990")
-severe_right = Image("09090:00000:00000:90009:09990")
-danger_blank = Image("00000:00000:00000:00000:00000")
+caution2 = Image("00000:99099:00000:09990:00000")
+alert_close = Image("00000:99099:00000:09990:00000")
+severe_right = Image("00000:99099:00000:09990:00000")
+danger_blank = Image("00000:99099:00000:09990:00000")
+
 
 def show_caution():
-    display.show([caution_face, caution2], delay=400)
+    display.show([caution2, caution_face], delay=400)
 
 def show_alert():
-    display.show([alert_face, alert_close], delay=260)
+    display.show([alert_close, alert_face], delay=260)
 
 def show_severe():
-    display.show([severe_face, severe_right], delay=150)
+    display.show([severe_right, severe_face], delay=150)
 
 def show_danger():
-    display.show([danger_face, danger_blank], delay=70)
+    display.show([danger_blank, danger_face], delay=70)
 
 # ★ キャッシュ
 today_wbgt = None
@@ -128,6 +129,7 @@ while True:
             anim_count = 0
         else:
             play_animation(level)
+            utime.sleep(0.15) 
             anim_count += 1
 
     utime.sleep(0.1)
