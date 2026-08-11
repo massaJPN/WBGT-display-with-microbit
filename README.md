@@ -13,3 +13,6 @@ microbitではWBGTの表示を行い、ESPRで現在時刻の取得、環境省�
 ・micorobit用、micro:bit python editor V3  
 ・ESPR用、Arduino IDE 1.8.15  
   
+# 関連サイト  
+詳細はこちらのブログ記事にて紹介しています。  
+https://massa4649.com/microbit_2/  
